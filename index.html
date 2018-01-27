@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+<script>
+    $(document).ready(function(){
+        $("button").click(function(){
+            if (!$("#orderForm").valid())
+            {
+                alert("Wartości niepoprawne!");
+                return;
+            }
+            let formValues = $("form").serializeArray(); 
+            let data = {};
+            $.each(formValues, function() {
+                data[this.name] = this.value || '';
+            });
+            $.ajax({
+                type: 'POST',
+                method: 'POST',
+                url: 'YOURFUNCTIONURL',
+                data: JSON.stringify(data),
+                headers : {
+                    "Content-Type":"application/x-www-form-urlencoded" },
+                success: function(data, status){
+                    alert("Zgłoszenie dodane pomyślnie");},
+                error: function(data, status) {
+                    alert(status);}
+            });
+            return false;
+        });
+    });
+</script>
+<body>
+<nav class="navbar navbar-light bg-light">
+    <h2 class="navbar-brand">Aplikacja fotograf</h2>
+</nav>
+<form id="orderForm">
+    <div style="margin:20px 70% 0px 20px">
+    <div class="form-group">
+        <label for="inputEmail">Email klienta:</label>
+        <input type="email" class="form-control" id="inputEmail" name="CustomerEmail" aria-describedby="emailHelp" placeholder="Wprowadź email" required>
+    </div>
+    <div class="form-group">
+        <label for="inputFile">Wybrany plik:</label>
+        <input type="text" class="form-control" id="inputFile" name="FileName" aria-describedby="fileNameHelp" placeholder="Wprowadź nazwę pliku" required 
+               pattern="[a-zA-Z0-9_]{1,}[.]{1}(jpg|jpeg|png|bmp){1}$">
+    </div>
+    <div class="form-group">
+        <label for="inputWidth">Szerokość:</label>
+        <input type="number" class="form-control" id="inputWidth" name="RequiredWidth" aria-describedby="inputWidthHelp" placeholder="Wprowadź oczekiwaną szerokość" required min="1">
+    </div>
+    <div class="form-group">
+        <label for="inputHeight">Wysokość:</label>
+        <input type="number" class="form-control" id="inputHeight" name="RequiredHeight" aria-describedby="inputHeightHelp" placeholder="Wprowadź oczekiwaną wysokość" required min="1">
+    </div>
+</form>
+<button class="btn btn-primary" style="float:right;">Zapisz</button>
+</div>
+</body>
+</html>
