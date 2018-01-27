@@ -20,7 +20,7 @@
             $.ajax({
                 type: 'POST',
                 method: 'POST',
-                url: 'YOURFUNCTIONURL',
+                url: 'https://facesender666.azurewebsites.net/api/SaveOrderFunction?code=la9HW3u2NfF7Mri8l7NpGqNpZBEeyY6yW9LGudttapeyPVK2dsXnkQ==',
                 data: JSON.stringify(data),
                 headers : {
                     "Content-Type":"application/x-www-form-urlencoded" },
@@ -41,7 +41,7 @@
     <div style="margin:20px 70% 0px 20px">
     <div class="form-group">
         <label for="inputEmail">Email klienta:</label>
-        <input type="email" class="form-control" id="inputEmail" name="CustomerEmail" aria-describedby="emailHelp" placeholder="Wprowadź email" required>
+        <input type="email" class="form-control" id="inputEmail" name="Email" aria-describedby="emailHelp" placeholder="Wprowadź email" required>
     </div>
     <div class="form-group">
         <label for="inputFile">Wybrany plik:</label>
@@ -50,11 +50,11 @@
     </div>
     <div class="form-group">
         <label for="inputWidth">Szerokość:</label>
-        <input type="number" class="form-control" id="inputWidth" name="RequiredWidth" aria-describedby="inputWidthHelp" placeholder="Wprowadź oczekiwaną szerokość" required min="1">
+        <input type="number" class="form-control" id="inputWidth" name="Width" aria-describedby="inputWidthHelp" placeholder="Wprowadź oczekiwaną szerokość" required min="1">
     </div>
     <div class="form-group">
         <label for="inputHeight">Wysokość:</label>
-        <input type="number" class="form-control" id="inputHeight" name="RequiredHeight" aria-describedby="inputHeightHelp" placeholder="Wprowadź oczekiwaną wysokość" required min="1">
+        <input type="number" class="form-control" id="inputHeight" name="Height" aria-describedby="inputHeightHelp" placeholder="Wprowadź oczekiwaną wysokość" required min="1">
     </div>
 </form>
 <button class="btn btn-primary" style="float:right;">Zapisz</button>
